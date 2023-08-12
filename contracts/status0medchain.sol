@@ -6,8 +6,8 @@ contract flowbits {
         string patient_name;
         uint256 age;
         string gender;
-        string height;
-        uint256 weight;
+        string heightandweight;
+        string medicalhist;
         address patient_address;
         uint256 phone_no;
         string patient_home_adr;
@@ -53,8 +53,8 @@ contract flowbits {
         string memory _patient_name,
         uint256 _age,
         string memory _gender,
-        string memory _height,
-        uint256 _weight,
+        string memory _heightandweight,
+        string memory _medicalhist,
         uint256 _phone_no,
         string memory _patient_home_adr,
         uint256 _dob
@@ -64,10 +64,11 @@ contract flowbits {
         p.patient_name=_patient_name;
         p.age=_age;
         p.gender=_gender;
-        p.height=_height;
-        p.weight=_weight;
+        p.heightandweight=_heightandweight;
+        p.medicalhist=_medicalhist;
         p.phone_no=_phone_no;
         p.patient_address=msg.sender;
+        p.patient_home_adr=_patient_home_adr;
         p.date=block.timestamp;
         p.dob=_dob;
 
@@ -79,8 +80,8 @@ contract flowbits {
         string memory _patient_name,
         uint256 _age,
         string memory _gender,
-        string memory _height,
-        uint256 _weight,
+        string memory _heightandweight,
+        string memory _medicalhist,
         uint256 _phone_no,
         string memory _patient_home_adr,
         uint256 _dob
@@ -90,10 +91,11 @@ contract flowbits {
         p.patient_name=_patient_name;
         p.age=_age;
         p.gender=_gender;
-        p.height=_height;
-        p.weight=_weight;
+        p.heightandweight=_heightandweight;
+        p.medicalhist=_medicalhist;
         p.phone_no=_phone_no;
         p.patient_address=msg.sender;
+        p.patient_home_adr=_patient_home_adr;
         p.dob=_dob;
     }
     //store doctor details
@@ -206,13 +208,13 @@ contract flowbits {
 
     //Search patient details by entering a patient address (Only record owner or doctor with permission will be allowed to access)
     function searchPatient(address patientaddr) public view returns(
-        string memory, uint256, string memory, string memory, uint256, uint256, address, uint256 
+        string memory, uint256, string memory, string memory, string memory, uint256, string memory, uint256 
     ) {
         require(isApproved[patientaddr][msg.sender]);
         
         patient storage p = patientmap[patientaddr];
         
-        return (p.patient_name, p.age, p.gender, p.height, p.weight, p.phone_no, p.patient_address, p.dob);
+        return (p.patient_name, p.age, p.gender, p.heightandweight, p.medicalhist, p.phone_no, p.patient_home_adr, p.dob);
     }
 
         //Search appointment details by entering a patient address
