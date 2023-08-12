@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CONNECTION TO METAMASK</title>
+    <title>View Doc</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
 </head>
 <body>
@@ -15,15 +15,11 @@
     <button onclick="readContract()">Search</button>
   
     <div>
-      <h2>Patient Details</h2>
+      <h2>Doctor Details</h2>
       <p><strong>Name:</strong> <span id="name"></span></p>
-      <p><strong>Age:</strong> <span id="age"></span></p>
-      <p><strong>Gender:</strong> <span id="gender"></span></p>
-      <p><strong>Height and Weight:</strong> <span id="heightandweight"></span></p>
-      <p><strong>Previous Medical History:</strong> <span id="medicalhist"></span></p>
+      <p><strong>Doctor's Specialisation:</strong> <span id="docspecial"></span></p>
       <p><strong>Phone Number:</strong> <span id="phoneNo"></span></p>
-      <p><strong>Patient Address:</strong> <span id="patientAddressResult"></span></p>
-      <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+      <p><strong>Doctor's Qualification:</strong> <span id="docqualification"></span></p>
     </div>
 
 
@@ -590,7 +586,7 @@
                  "type": "function"
              }
          ];
-              const Address = "0xda4b79fd10fE18411d0bf68148a087b68178Bb56";
+             const Address = "0xda4b79fd10fE18411d0bf68148a087b68178Bb56";
             window.web3 = await new Web3(window.ethereum);
             window.contract = await new window.web3.eth.Contract( ABI, Address); 
             //document.getElementById("contractArea").innerHTML = "connected to smart contract"; 
@@ -606,35 +602,27 @@
                account = accounts[0];
                 document.getElementById("accountArea").innerText = account;
             }
-            contract.methods.searchPatient(patientAddress).call({ from: account }, (error, result) => {
+            contract.methods.searchDoc(patientAddress).call({ from: account }, (error, result) => {
                 if (error) {
                   alert("You are not authorised")
                   document.getElementById('name').innerText = "n/a";
-                  document.getElementById('age').innerText = "n/a";
-                  document.getElementById('gender').innerText = "n/a";
-                   document.getElementById('heightandweight').innerText = "n/a";
-                   document.getElementById('medicalhist').innerText = "n/a";
-                   document.getElementById('phoneNo').innerText = "n/a";
-                   document.getElementById('patientAddressResult').innerText = "n/a";
-                   document.getElementById('dob').innerText = "n/a";
+                  document.getElementById('docspecial').innerText = "n/a";
+                  document.getElementById('phoneNo').innerText = "n/a";
+                   document.getElementById('docqualification').innerText = "n/a";
                 } else {
-                    const patientName = result[0];
-                    const age = result[1];
-                    const gender = result[2];
-                    const heightandweight = result[3];
-                    const medicalhist = result[4];
-                    const phoneNo = result[5];
-                    const patientAddress = result[6];
-                    const dob = result[7];
+                    //const patientName = result[0];
+                    //const age = result[1];
+                    //const gender = result[2];
+                    //const heightandweight = result[3];
+                    //const medicalhist = result[4];
+                    //const phoneNo = result[5];
+                    //const patientAddress = result[6];
+                    //const dob = result[7];
                             // Display the patient details on the frontend
         document.getElementById('name').innerText = result[0];
-       document.getElementById('age').innerText = result[1];
-       document.getElementById('gender').innerText = result[2];
-        document.getElementById('heightandweight').innerText = result[3];
-        document.getElementById('medicalhist').innerText = result[4];
-        document.getElementById('phoneNo').innerText = result[5];
-        document.getElementById('patientAddressResult').innerText = result[6];
-        document.getElementById('dob').innerText = result[7];
+       document.getElementById('docspecial').innerText = result[1];
+       document.getElementById('phoneNo').innerText = result[2];
+        document.getElementById('docqualification').innerText = result[3];
                
                 }
             })};

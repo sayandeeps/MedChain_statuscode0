@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Set Doctor</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
 </head>
 <body>
@@ -11,44 +11,29 @@
         <h3>Connected account</h3>
         <p id="accountArea"></p>
     </div>
-    <h2>Register Patient</h2>
+    <h2>Register Doctor</h2>
     <form id="myForm" role="form">
 		<table style="width:25%"> 
             <tr>
-			<td> Patient Name:</td>
+			<td> Doctor's Name:</td>
 			<td><input type="text" id="name1" name="name1"></td>
 		  </tr>
 		  <tr>
-			<td>Age:</td>
-			<td><input type="text" id="age" name="age"></td>
-		  </tr>
-		   
-		   <tr>
-			<td>Gender:</td>
-			<td><input type="text" id="gen" name="gen"></td>
-		  </tr>
-            <tr>
-			<td>Height(in ft):</td>
-			<td><input type="text" id="hghtandwt" name="hght"></td>
-		  </tr>
-		  <tr>
-			<td>Weight(in kg):</td>
-			<td><input type="text" id="patienthist" name="hist"></td>
-		  </tr>
-		  <tr>
-			<td>Address:</td>
-			<td><input type="text" id="addr" name="addr"></td>
+			<td>Doctor's Specialisation:</td>
+			<td><input type="text" id="docspl" name="docspl"></td>
 		  </tr>
 		  <tr>
 			<td>Phone Number:</td>
 			<td><input type="text" id="pno" name="pno"></td>
 		  </tr>
 		  <tr>
-			<td>date of birth:</td>
-			<td><input type="text" id="dob" name="dob"></td>
+			<td>Doctor's Qualification</td>
+			<td><input type="text" id="docqual" name="docqual"></td>
 		  </tr>
 		  <tr>
-			
+			<td>Doctor's Address</td>
+			<td><input type="text" id="docaddr" name="docaddr"></td>
+		  </tr>
           		 
 		</table>
         <button type="submit">submit</button>
@@ -56,13 +41,10 @@
 	</form>
     <script>
         const namei=document.getElementById("name1")
-        const agei=document.getElementById("age")
-        const geni=document.getElementById("gen")
-        const heightandweighti=document.getElementById("hghtandwt")
-        const patienthisti=document.getElementById("patienthist")
-        const addressi=document.getElementById("addr")
-        const phoneNumberi= document.getElementById("pno")
-        const dobi = document.getElementById("dob")
+        const docspli=document.getElementById("docspl")
+        const pnoi=document.getElementById("pno")
+        const docquali=document.getElementById("docqual")
+        const docaddri= document.getElementById("docaddr")
         const form = document.querySelector("form")
 
 
@@ -641,13 +623,11 @@
                      
                  } 
                  const name = namei.value;
-                 const age = parseInt(agei.value);
-                 const gender = geni.value;
-                 const heightandweight = heightandweighti.value;
-                 const patienthist = patienthisti.value;
-                 const address = addressi.value;
-                 const phoneNumber = parseInt(phoneNumberi.value);
-                 const dob = parseInt(dobi.value);
+                 const docspl = docspli.value;
+                 const pno = parseInt(pnoi.value);
+                 const docqual = docquali.value;
+                 const docaddr=docaddri.value;
+                 
                // console.log(name)
               //  console.log(age)
                // console.log(gender)
@@ -657,7 +637,7 @@
                 //console.log(phoneNumber)
                 //console.log(dob)
                 await contract.methods
-                .setPatients(name, age, gender, heightandweight, patienthist, phoneNumber, address, dob)
+                .setDoc(name, docspl, pno, docqual,docaddr)
                 .send({ from: account });
         
               console.log("Form data submitted successfully!");
