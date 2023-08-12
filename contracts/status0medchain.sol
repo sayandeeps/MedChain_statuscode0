@@ -45,7 +45,7 @@ contract flowbits {
     mapping(address => bool) isDoctor;
 
     constructor() public {
-        owner = msg.sender;
+        owner = 0xBB54aB58483E6C4bD96b587a6F27E2C7Bbe3da9d;
     }
 
     //set patient details
@@ -103,19 +103,22 @@ contract flowbits {
         string memory _doctor_name,
          string memory _doctor_specialisation,
          uint256 _doctor_ph_no,
-         string memory _doctor_qualification
+         string memory _doctor_qualification,
+         address _docaddr
     ) public{
-        require(!isDoctor[msg.sender]);
-        doctor storage d = doctormap[msg.sender];
+        require(owner == msg.sender);
+        doctor storage d = doctormap[_docaddr];
 
         d.doctor_name=_doctor_name;
         d.doctor_specialisation = _doctor_specialisation;
         d.doctor_ph_no = _doctor_ph_no;
         d.doctor_qualification=_doctor_qualification;
-        d.doctor_address=msg.sender;
+        d.doctor_address=_docaddr;
 
-        doctorList.push(msg.sender);
-        isDoctor[msg.sender] = true;   
+        doctorList.push(_docaddr);
+        isDoctor[_docaddr] = true;  
+        isApproved[_docaddr][_docaddr]=true; 
+        isApproved[_docaddr][owner]=true;
     }
     //edit doc
     function editDoc(
@@ -249,7 +252,16 @@ contract flowbits {
         return (a.creationDate);
     }
 
-
+//search doc
+ function searchDoc(address docaddr) public view returns(
+        string memory, string memory, uint256, string memory
+    ) {
+        require(isApproved[docaddr][msg.sender]);
+        
+        doctor storage d = doctormap[docaddr];
+        
+        return (d.doctor_name, d.doctor_specialisation, d.doctor_ph_no, d.doctor_qualification);
+    }
 
 
 
