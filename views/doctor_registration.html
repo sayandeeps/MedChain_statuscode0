@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Doctor's Registration</title>
+</head>
+<body class="flex justify-center items-center min-h-screen" style="background-image: linear-gradient(115deg, #000000, #7e59c8)">
+<div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
+        <div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center" style="background-image: url('images/health_app.jpeg');">
+            <h1 class="text-white text-3xl mb-1">Welcome</h1>
+            <div>
+                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean suspendisse aliquam varius rutrum purus maecenas ac <a href="#" class="text-purple-500 font-semibold">Learn more</a></p>
+            </div>
+        </div>
+        <div class="w-full lg:w-1/2 py-2 px-12">
+            <h2 class="text-3xl mb-2">Doctor's Register</h2>
+            <p class="mb-4">
+                Create your account. It is free and only takes a minute.
+            </p>
+            <form action="#" class="space-y-4">
+                <div class="grid grid-cols-2 gap-5">
+                    <label>
+                        <span class="text-white">Name</span>
+                        <input type="text" placeholder="Firstname" class="border border-gray-400 py-1 px-2 rounded-md">
+                    </label>
+                    <label>
+                        <span class="text-white">Age</span>
+                        <input type="number" placeholder="Age" class="border border-gray-400 py-1 px-2 rounded-md">
+                    </label>
+                </div>
+                <div class="grid grid-cols-2 gap-5 mt-2">
+                    <label>
+                        <span class="text-white">Specialization</span>
+                        <input type="text" placeholder="Specialization" class="border border-gray-400 py-1 px-2 rounded-md">
+                    </label>
+                    <label>
+                        <span class="text-white">Phone Number</span>
+                        <input type="number" placeholder="Phone Number" class="border border-gray-400 py-1 px-2 rounded-md">
+                    </label>
+                </div>
+                <div class="grid grid-cols-2 gap-5 mt-2">
+                    <label>
+                        <span class="text-white">Qualification</span>
+                        <input type="text" placeholder="Qualification" class="border border-gray-400 py-1 px-2 rounded-md">
+                    </label>
+                    <label>
+                        <span class="text-white">Address</span>
+                        <input type="text" placeholder="Address" class="border border-gray-400 py-1 px-2 rounded-md">
+                    </label>
+                </div>
+                <div class="mt-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="border border-gray-400 mr-2">
+                        <span class="text-white">I accept the <a href="#" class="text-purple-500 font-semibold">Terms of Use</a> & <a href="#" class="text-purple-500 font-semibold">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <div class="mt-2">
+                    <button class="w-full bg-black py-2 text-center text-white rounded-xl cursor-pointer" onclick="handleRegistration()">Register Now</button>
+                </div>
+                <div class="mt-2">
+                    <p id="error-message" class="text-red-500"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function handleRegistration() {
+        const name = document.querySelector('[placeholder="Firstname"]').value;
+        const age = document.querySelector('[placeholder="Age"]').value;
+        const specialization = document.querySelector('[placeholder="Specialization"]').value;
+        const phoneNumber = document.querySelector('[placeholder="Phone Number"]').value;
+        const qualification = document.querySelector('[placeholder="Qualification"]').value;
+        const address = document.querySelector('[placeholder="Address"]').value;
+
+        if (name === '' || age === '' || specialization === '' || phoneNumber === '' || qualification === '' || address === '') {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = 'Please fill in all required fields.';
+            return;
+        }
+
+        // Here you can implement your actual form submission logic
+        // For this example, let's just show an alert
+        alert('Registration successful!');
+    }
+</script>
+</body>
+</html>
