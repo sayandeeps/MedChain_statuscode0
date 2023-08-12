@@ -5,68 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+
 </head>
 <body>
     <div>
         <h3>Connected account</h3>
         <p id="accountArea"></p>
     </div>
-    <h2>Register Patient</h2>
+    <h2>Revoke Permission</h2>
     <form id="myForm" role="form">
 		<table style="width:25%"> 
             <tr>
-			<td> Patient Name:</td>
-			<td><input type="text" id="name1" name="name1"></td>
+			<td> Whom you want to revoke access from:</td>
+			<td><input type="text" id="addr" name="address"></td>
 		  </tr>
-		  <tr>
-			<td>Age:</td>
-			<td><input type="text" id="age" name="age"></td>
-		  </tr>
-		   
-		   <tr>
-			<td>Gender:</td>
-			<td><input type="text" id="gen" name="gen"></td>
-		  </tr>
-            <tr>
-			<td>Height & Weight:</td>
-			<td><input type="text" id="hghtandwt" name="hght"></td>
-		  </tr>
-		  <tr>
-			<td>Medical History:</td>
-			<td><input type="text" id="patienthist" name="hist"></td>
-		  </tr>
-		  <tr>
-			<td>Address:</td>
-			<td><input type="text" id="addr" name="addr"></td>
-		  </tr>
-		  <tr>
-			<td>Phone Number:</td>
-			<td><input type="text" id="pno" name="pno"></td>
-		  </tr>
-		  <tr>
-			<td>date of birth:</td>
-			<td><input type="text" id="dob" name="dob"></td>
-		  </tr>
+		 
 		  <tr>
 			
           		 
 		</table>
-        <button type="submit">submit</button>
+        <button type="submit">Revoke Access</button>
 		
 	</form>
+    <div>
+        <button id="setAccount" onclick="revacc()">Change Account</button>
+    </div>
     <script>
-        const namei=document.getElementById("name1")
-        const agei=document.getElementById("age")
-        const geni=document.getElementById("gen")
-        const heightandweighti=document.getElementById("hghtandwt")
-        const patienthisti=document.getElementById("patienthist")
-        const addressi=document.getElementById("addr")
-        const phoneNumberi= document.getElementById("pno")
-        const dobi = document.getElementById("dob")
-        const form = document.querySelector("form")
-
-
-
+        const addri=document.getElementById("addr")
+        const form=document.querySelector("form")
         //1- connect metamask
         let account;
         const connectMetamask = async () => {
@@ -629,7 +595,14 @@
             window.contract = await new window.web3.eth.Contract( ABI, Address); 
             //document.getElementById("contractArea").innerHTML = "connected to smart contract"; 
         }
-
+        const revacc=async()=>{
+            if(window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({method: "eth_requestAccounts"});
+                account = accounts[0];
+                 document.getElementById("accountArea").innerText = account;
+                 
+             } 
+        }
         //3-read data from smart contract
         form.addEventListener("submit",async (e)=>{
             e.preventDefault()
@@ -640,27 +613,13 @@
                      document.getElementById("accountArea").innerText = account;
                      
                  } 
-                 const name = namei.value;
-                 const age = parseInt(agei.value);
-                 const gender = geni.value;
-                 const heightandweight = heightandweighti.value;
-                 const patienthist = patienthisti.value;
-                 const address = addressi.value;
-                 const phoneNumber = parseInt(phoneNumberi.value);
-                 const dob = parseInt(dobi.value);
-               // console.log(name)
-              //  console.log(age)
-               // console.log(gender)
-               // console.log(height)
-               // console.log(weight)
-                //console.log(address)
-                //console.log(phoneNumber)
-                //console.log(dob)
+                 const addr = addri.value;
+                 
                 await contract.methods
-                .setPatients(name, age, gender, heightandweight, patienthist, phoneNumber, address, dob)
+                .RevokePermission(addr)
                 .send({ from: account });
         
-              console.log("Form data submitted successfully!");
+              alert("Granted user access successfully");
                  
             }catch(e){
                 alert("Some Error Occured")

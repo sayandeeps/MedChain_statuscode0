@@ -11,7 +11,7 @@
         <h3>Connected account</h3>
         <p id="accountArea"></p>
     </div>
-    <h2>Register Patient</h2>
+    <h2>Edit Patient</h2>
     <form id="myForm" role="form">
 		<table style="width:25%"> 
             <tr>
@@ -28,7 +28,7 @@
 			<td><input type="text" id="gen" name="gen"></td>
 		  </tr>
             <tr>
-			<td>Height & Weight:</td>
+			<td>Height(in ft):</td>
 			<td><input type="text" id="hghtandwt" name="hght"></td>
 		  </tr>
 		  <tr>
@@ -657,10 +657,10 @@
                 //console.log(phoneNumber)
                 //console.log(dob)
                 await contract.methods
-                .setPatients(name, age, gender, heightandweight, patienthist, phoneNumber, address, dob)
+                .editPatients(name, age, gender, heightandweight, patienthist, phoneNumber, address, dob)
                 .send({ from: account });
         
-              console.log("Form data submitted successfully!");
+              console.log("Patient details updated successfully!");
                  
             }catch(e){
                 alert("Some Error Occured")
