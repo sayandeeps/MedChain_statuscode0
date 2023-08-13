@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Information</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>Doctor Information</h1>
+    <div id="doctorsInfo"></div>
+
+    <script>
+        const contractAddress = '0xFAc90dE0e29DcD5a06cA0CA351d63Ce1e47Cc0d1'; // Replace with your actual contract address
+        const contractABI = [
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_doctor_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_doctor_specialisation",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_doctor_ph_no",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_doctor_qualification",
+                    "type": "string"
+                }
+            ],
+            "name": "editDoc",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_patient_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_age",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_gender",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_heightandweight",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_medicalhist",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_phone_no",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_patient_home_adr",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_dob",
+                    "type": "uint256"
+                }
+            ],
+            "name": "editPatients",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "docaddr",
+                    "type": "address"
+                }
+            ],
+            "name": "givePermission",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "docaddr",
+                    "type": "address"
+                }
+            ],
+            "name": "RevokePermission",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patientaddr",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_date",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_time",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_diagnosis",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_status",
+                    "type": "string"
+                }
+            ],
+            "name": "setAppointments",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_doctor_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_doctor_specialisation",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_doctor_ph_no",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_doctor_qualification",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_docaddr",
+                    "type": "address"
+                }
+            ],
+            "name": "setDoc",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_patient_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_age",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_gender",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_heightandweight",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_medicalhist",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_phone_no",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_patient_home_adr",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_dob",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setPatients",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patientaddr",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_date",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_time",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_diagnosis",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_status",
+                    "type": "string"
+                }
+            ],
+            "name": "updateAppointments",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "appointmentList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "doctorList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getAppointments",
+            "outputs": [
+                {
+                    "internalType": "address[]",
+                    "name": "",
+                    "type": "address[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getDoctorInformation",
+            "outputs": [
+                {
+                    "internalType": "string[]",
+                    "name": "doctorNames",
+                    "type": "string[]"
+                },
+                {
+                    "internalType": "string[]",
+                    "name": "doctorSpecialities",
+                    "type": "string[]"
+                },
+                {
+                    "internalType": "string[]",
+                    "name": "doctorDesignations",
+                    "type": "string[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getDoctors",
+            "outputs": [
+                {
+                    "internalType": "address[]",
+                    "name": "",
+                    "type": "address[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getPatients",
+            "outputs": [
+                {
+                    "internalType": "address[]",
+                    "name": "",
+                    "type": "address[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "patientList",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "patientaddr",
+                    "type": "address"
+                }
+            ],
+            "name": "searchAppointment",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_address",
+                    "type": "address"
+                }
+            ],
+            "name": "searchAppointmentDate",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "docaddr",
+                    "type": "address"
+                }
+            ],
+            "name": "searchDoc",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "patientaddr",
+                    "type": "address"
+                }
+            ],
+            "name": "searchPatient",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_address",
+                    "type": "address"
+                }
+            ],
+            "name": "searchRecordDate",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]; // Replace with your actual contract ABI
+        
+        const web3 = new Web3(window.ethereum); // Use your own provider
+        
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+        
+        async function displayDoctorInfo() {
+            const doctorsCount = await contract.methods.getDoctorCount().call();
+        
+            const [doctorNames, doctorSpecialities, doctorDesignations] = await contract.methods.getDoctorInformation().call();
+        
+            const doctorsInfoDiv = document.getElementById('doctorsInfo');
+            doctorsInfoDiv.innerHTML = '<h2>Doctor Information:</h2>';
+        
+            for (let i = 0; i < doctorsCount; i++) {
+                const doctorInfo = `
+                    <p><strong>Name:</strong> ${doctorNames[i]}</p>
+                    <p><strong>Speciality:</strong> ${doctorSpecialities[i]}</p>
+                    <p><strong>Designation:</strong> ${doctorDesignations[i]}</p>
+                    <hr>
+                `;
+                doctorsInfoDiv.innerHTML += doctorInfo;
+            }
+        }
+        
+        window.onload = async () => {
+            if (typeof web3 !== 'undefined') {
+                await web3.eth.requestAccounts();
+                displayDoctorInfo();
+            } else {
+                console.log('Web3 not found. Please install a web3-enabled browser extension like MetaMask.');
+            }
+        };
+        
+
+    </script>
+</body>
+</html>
