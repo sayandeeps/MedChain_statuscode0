@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Doctor List</title>
+    <style>
+        body {
+            background-image: linear-gradient(115deg, #000000, #7e59c8);
+        }
+    </style>
+</head>
+<body>
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-semibold text-white mb-4">Doctor List</h1>
+    <div class="overflow-x-auto">
+        <table class="table-auto w-full bg-white rounded-lg shadow-lg">
+            <thead>
+            <tr class="bg-gray-200">
+                <th class="py-2 px-4">Name</th>
+                <th class="py-2 px-4">Age</th>
+                <th class="py-2 px-4">Specialization</th>
+                <th class="py-2 px-4">Phone Number</th>
+                <th class="py-2 px-4">Qualification</th>
+                <th class="py-2 px-4">Address</th>
+            </tr>
+            </thead>
+            <tbody id="doctor-table-body">
+            <!-- Table rows will be added dynamically here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    // Fetch doctor information and populate the table
+    window.addEventListener('DOMContentLoaded', () => {
+        const doctorTableBody = document.getElementById('doctor-table-body');
+
+        // Mock data (replace this with actual data retrieval)
+        const doctors = [
+            { name: 'Dr. John Doe', age: 35, specialization: 'Cardiologist', phoneNumber: '1234567890', qualification: 'MD', address: '123 Main St' },
+            // Add more doctors here
+        ];
+
+        doctors.forEach(doctor => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                    <td class="py-2 px-4">${doctor.name}</td>
+                    <td class="py-2 px-4">${doctor.age}</td>
+                    <td class="py-2 px-4">${doctor.specialization}</td>
+                    <td class="py-2 px-4">${doctor.phoneNumber}</td>
+                    <td class="py-2 px-4">${doctor.qualification}</td>
+                    <td class="py-2 px-4">${doctor.address}</td>
+                `;
+            doctorTableBody.appendChild(row);
+        });
+    });
+</script>
+</body>
+</html>

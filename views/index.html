@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>MedChain</title>
+</head>
+<body>
+<header class="text-gray-400 bg-gray-900 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-red-500 rounded-full" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">MEDChain</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="home.html" class="mr-5 hover:text-white">Home</a>
+            <a href="about.html" class="mr-5 hover:text-white">About</a>
+            <a href="contact.html" class="mr-5 hover:text-white">Contact</a>
+        </nav>
+        <button onclick="location.href='signin.html'" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
+            SIGN IN
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+</header>
+<section class="bg-white dark:bg-gray-900">
+    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 items-center">
+        <div class="ml-auto text-center lg:col-span-7 lg:pr-12">
+            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Patient Management Tool for Hospital and Medical Companies</h1>
+            <p class="max-w-2xl mb-6 font-light text-grey-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+            <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                Get started
+                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                Set Up Account
+            </a>
+        </div>
+        <div class="mr-auto ml-auto mt-8 lg:mt-0 lg:col-span-5 lg:flex">
+            <img class="pr-8" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup">
+        </div>
+    </div>
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+            <h1 class="title-font sm:text-4xl text-6xl mb-4 font-medium text-white pl-3">Hospitality and Treatment with
+                <br class="hidden lg:inline-block">Security and Decentralised Way
+            </h1>
+            <p class="mb-8 leading-relaxed text-white pl-3">NO Fear of Data Leak to Medical Insurance Company Provider</p>
+            <div class="flex justify-center">
+                <button class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg pl-7">Button</button>
+                <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg pl-7">Button</button>
+            </div>
+        </div>
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mx-auto">
+            <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+        </div>
+    </div>
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+            <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
+                <div class="h-full text-center">
+                    <img alt="testimonial" class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-800 bg-gray-800 bg-opacity-10" src="https://dummyimage.com/302x302">
+                    <p class="leading-relaxed text-white">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                    <span class="inline-block h-1 w-10 rounded bg-red-500 mt-6 mb-4"></span>
+                    <h2 class="text-white font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
+                    <p class="text-gray-500">Senior Product Designer</p>
+                </div>
+            </div>
+            <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
+                <div class="h-full text-center">
+                    <img alt="testimonial" class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-800 bg-gray-800 bg-opacity-10" src="https://dummyimage.com/300x300">
+                    <p class="leading-relaxed text-white">Embracing innovation, this blockchain-powered hospital management platform ensures our data's security while delivering seamless patient care.</p>
+                    <span class="inline-block h-1 w-10 rounded bg-red-500 mt-6 mb-4"></span>
+                    <h2 class="text-white font-medium title-font tracking-wider text-sm">ALPER KAMU</h2>
+                    <p class="text-gray-500">UI Developer</p>
+                </div>
+            </div>
+            <div class="lg:w-1/3 lg:mb-0 p-4">
+                <div class="h-full text-center">
+                    <img alt="testimonial" class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-800 bg-gray-800 bg-opacity-10" src="https://dummyimage.com/305x305">
+                    <p class="leading-relaxed text-white">With its decentralized approach, this hospital management solution not only safeguards patient information but also enhances transparency.</p>
+                    <span class="inline-block h-1 w-10 rounded bg-red-500 mt-6 mb-4"></span>
+                    <h2 class="text-white font-medium title-font tracking-wider text-sm">HENRY LETHAM</h2>
+                    <p class="text-gray-500">CTO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+        <div class="flex flex-wrap -mx-4 mt-auto mb-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
+            <div class="w-full sm:p-4 px-4 mb-6">
+                <h1 class="title-font font-medium text-xl mb-2 text-white pl-4">Moon hashtag pop-up try-hard offal truffaut</h1>
+                <div class="leading-relaxed text-white pl-4">Pour-over craft beer pug drinking vinegar live-edge gastropub, keytar neutra sustainable fingerstache kickstarter.</div>
+            </div>
+            <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+                <h2 class="title-font font-medium text-3xl text-white pl-6">2.7K</h2>
+                <p class="leading-relaxed text-white pl-6">Users</p>
+            </div>
+            <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+                <h2 class="title-font font-medium text-3xl text-white pl-6">1.8K</h2>
+                <p class="leading-relaxed text-white pl-6">Subscribes</p>
+            </div>
+            <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+                <h2 class="title-font font-medium text-3xl text-white pl-6">35</h2>
+                <p class="leading-relaxed text-white pl-6">Online User</p>
+            </div>
+        </div>
+        <div class="lg:w-1/2 sm:w-1/3 w-full rounded-lg overflow-hidden mt-6 sm:mt-0">
+            <img class="object-cover object-center w-full h-full" src="https://dummyimage.com/600x300" alt="stats">
+        </div>
+    </div>
+</section>
+</body>
+<footer class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-red-500 rounded-full" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Tailblocks</span>
+        </a>
+        <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2023 MedChain@ —
+            <a href="https://twitter.com/knyttneve" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@knyttneve</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="text-gray-400">
+               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+               </svg>
+            </a>
+            <a class="ml-3 text-gray-400">
+               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+               </svg>
+            </a>
+            <a class="ml-3 text-gray-400">
+               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+               </svg>
+            </a>
+            <a class="ml-3 text-gray-400">
+               <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+               </svg>
+            </a>
+         </span>
+    </div>
+</footer>
+</html>
