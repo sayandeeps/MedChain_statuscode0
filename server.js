@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-
+app.use(express.static(__dirname));
 app.get("/pdetails", (req, res) => {
     res.sendFile(path.join(__dirname + "/viewpatients.html"));
 })
@@ -35,6 +35,12 @@ app.get("/givepermi", (req, res) => {
 })
 app.get("/revokepermi", (req, res) => {
     res.sendFile(path.join(__dirname + "/revokepermi.html"));
+})
+app.get("/pdashboard", (req, res) => {
+    res.sendFile(path.join(__dirname + "/patientdshbrd.html"));
+})
+app.get("/ddashboard", (req, res) => {
+    res.sendFile(path.join(__dirname + "/docdashbrd.html"));
 })
 const server = app.listen(6988);
 const portNumber = server.address().port;

@@ -5,9 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Doctor</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div>
+       <!-- form -->
+       <section class="bg-white dark:bg-gray-900">
+        <div class="flex items-center space-x-4 pt-6 pl-2">
+            <img class="w-10 h-10 rounded-full" src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="">
+            <div class="font-medium dark:text-white">
+                <div>Connected Account</div>
+                <div class="text-sm text-gray-500 dark:text-gray-400" id="accountArea">Your Metamask Address</div>
+            </div>
+        </div>
+        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Doctor Registration Form</h2>
+            <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Only Hospital Owner Can Fillup This Form</p>
+            <form action="#" class="space-y-8">
+                <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Doctor's Name</label>
+                    <input type="text" id="name1" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Doctor's Name" >
+                </div>
+                <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Doctor's Specialisation</label>
+                    <input type="text" id="docspl" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Doctor's Specialization" >
+                </div>
+                <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Doctor's Phone Number</label>
+                    <input type="text" id="pno" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Doctor's Specialization" >
+                </div>
+               
+                <div>
+                    <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Doctor's Qualification</label>
+                    <input type="text" id="docqual" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Doctor's Qualification" >
+                </div>
+                <div>
+                    <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Doctor's Wallet Address</label>
+                    <input type="text" id="docaddr" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Doctor's Wallet Address" >
+                </div>
+                
+                
+                
+                
+                <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Register</button>
+            </form>
+        </div>
+      </section>
+    <!-- <div>
         <h3>Connected account</h3>
         <p id="accountArea"></p>
     </div>
@@ -38,7 +81,7 @@
 		</table>
         <button type="submit">submit</button>
 		
-	</form>
+	</form> -->
     <script>
         const namei=document.getElementById("name1")
         const docspli=document.getElementById("docspl")
@@ -606,7 +649,7 @@
                 "type": "function"
             }
         ];
-            const Address = "0xda4b79fd10fE18411d0bf68148a087b68178Bb56";
+            ; const Address = "0x8d2aBD65416671233d63414Fd39971154f6474e5";
             window.web3 = await new Web3(window.ethereum);
             window.contract = await new window.web3.eth.Contract( ABI, Address); 
             //document.getElementById("contractArea").innerHTML = "connected to smart contract"; 

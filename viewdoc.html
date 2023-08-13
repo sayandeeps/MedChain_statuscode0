@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>View Doc</title>
+    <link rel="stylesheet" href="/test.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
 </head>
 <body>
@@ -9,18 +10,65 @@
         <h3>Connected account</h3>
         <p id="accountArea"></p>
     </div>
-    <h1>Search Patient Details</h1>
+    <div class="profile-container">
+        <!-- Profile Picture -->
+        <img class="profile-picture" src="https://cdn-icons-png.flaticon.com/128/387/387561.png" alt="pp">
+    
+        <!-- Profile Info -->
+        <div class="profile-info">
+          <h2 class="profile-name" >Doctor Details</h2>
+    
+          <!-- Personal Details -->
+          <div class="details-section">
+            <h3 class="section-header">PERSONAL DETAILS</h3>
+            <div class="details-row">
+              <div class="detail-item">
+                <b>Full Name</b>
+                <div id="name">John Doe</div>
+              </div>
+             
+              
+            </div>
+            <div class="details-row">
+              <div class="detail-item">
+                <!-- <b>Phone</b>
+                <div id="phoneNo">123-456-7890</div> -->
+              </div>
+              <div class="detail-item">
+                <b>Phone</b>
+                <div id="phoneNo">123-456-7890</div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Education Details -->
+          <div class="details-section">
+            <h3 class="section-header">EDUCATION DETAILS</h3>
+            <div class="details-row">
+              <div class="detail-item">
+                <b>Highest Qualification</b>
+                <div id="docqualification">Master's Degree</div>
+              </div>
+              <div class="detail-item">
+                <b>Speciality</b>
+                <div id="docspecial">Computer Science</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <h1>Search doc Details</h1>
     <label for="patientAddress">Enter Patient Address:</label>
     <input type="text" id="patientAddress" required/>
     <button onclick="readContract()">Search</button>
   
-    <div>
+    <!-- <div>
       <h2>Doctor Details</h2>
       <p><strong>Name:</strong> <span id="name"></span></p>
       <p><strong>Doctor's Specialisation:</strong> <span id="docspecial"></span></p>
       <p><strong>Phone Number:</strong> <span id="phoneNo"></span></p>
       <p><strong>Doctor's Qualification:</strong> <span id="docqualification"></span></p>
-    </div>
+    </div> -->
 
 
     <script>
@@ -34,7 +82,7 @@
                 //document.getElementById("accountArea").innerHTML = account;
             //}
 
-             const ABI = [
+             const ABI =[
              {
                  "inputs": [
                      {
@@ -153,7 +201,7 @@
                  "inputs": [
                      {
                          "internalType": "address",
-                         "name": "_patientaddr",
+                         "name": "_doctoraddr",
                          "type": "address"
                      },
                      {
@@ -277,7 +325,7 @@
                  "inputs": [
                      {
                          "internalType": "address",
-                         "name": "_patientaddr",
+                         "name": "_doctoraddr",
                          "type": "address"
                      },
                      {
@@ -364,6 +412,36 @@
              },
              {
                  "inputs": [],
+                 "name": "getDoctorInformation",
+                 "outputs": [
+                     {
+                         "components": [
+                             {
+                                 "internalType": "string",
+                                 "name": "name",
+                                 "type": "string"
+                             },
+                             {
+                                 "internalType": "string",
+                                 "name": "speciality",
+                                 "type": "string"
+                             },
+                             {
+                                 "internalType": "string",
+                                 "name": "designation",
+                                 "type": "string"
+                             }
+                         ],
+                         "internalType": "struct flowbits.DoctorInfo[]",
+                         "name": "",
+                         "type": "tuple[]"
+                     }
+                 ],
+                 "stateMutability": "view",
+                 "type": "function"
+             },
+             {
+                 "inputs": [],
                  "name": "getDoctors",
                  "outputs": [
                      {
@@ -424,7 +502,7 @@
                  "inputs": [
                      {
                          "internalType": "address",
-                         "name": "patientaddr",
+                         "name": "docaddr",
                          "type": "address"
                      }
                  ],
@@ -586,7 +664,8 @@
                  "type": "function"
              }
          ];
-             const Address = "0xda4b79fd10fE18411d0bf68148a087b68178Bb56";
+             ;
+              const Address = "0x7B7f2B87aFCEE25b602087F1f089Aca2b5f07606";
             window.web3 = await new Web3(window.ethereum);
             window.contract = await new window.web3.eth.Contract( ABI, Address); 
             //document.getElementById("contractArea").innerHTML = "connected to smart contract"; 
